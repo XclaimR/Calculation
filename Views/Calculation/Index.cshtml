@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Body";
+}
+
+<form id="form1" method="post" action="./calculate">
+    <label for="FNum">First Number:</label><br />
+    <input type="number" id="FNum" name="FNum" value="" /><br />
+    <label for="SNum">Second Number:</label><br />
+    <input type="number" id="SNum" name="SNum" value="" /><br /><br />
+    <input type="submit" id="submitbtn" value="Submit" class="submit" />
+    <br>
+    <br>
+</form>
+
+<script>
+    $(document).ready(function () {
+        $('#submitbtn').submit(function () {
+            $.ajax({
+                url: '/calculate',
+                type: 'POST',
+                dataType: 'number',
+                data: {
+                    fnum: form1.FNum.value,
+                    snum: form1.SNum.value,
+                }
+            });
+        });
+    });
+</script>
